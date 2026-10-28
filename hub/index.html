@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><!-- og --><meta property="og:type" content="website"><meta property="og:title" content="Project Link Hub"><meta property="og:description" content="Every demo, prototype, board and handoff for the Agent Operations Theater, HoyOS and Between Gigs, in one place."><meta name="description" content="Every demo, prototype, board and handoff for the Agent Operations Theater, HoyOS and Between Gigs, in one place."><meta property="og:url" content="https://playset-llc.github.io/agent-operations-theater/hub/"><meta property="og:image" content="https://playset-llc.github.io/agent-operations-theater/og/hub.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Project Link Hub"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Project Link Hub"><meta name="twitter:description" content="Every demo, prototype, board and handoff for the Agent Operations Theater, HoyOS and Between Gigs, in one place."><meta name="twitter:image" content="https://playset-llc.github.io/agent-operations-theater/og/hub.jpg"><!-- /og --><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Project Link Hub</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7,7 +7,7 @@
 /* Layout: sticky index rail on wide screens, one band per project; each band = header, media (theater only), list of link rows */
 :root{
   --bg:#f3f4f6; --surface:#ffffff; --fg:#151a22; --muted:#5b6474; --line:#dde1e7;
-  --theater:#0b84c6; --hoy:#c2552d; --gigs:#5b4fd0;
+  --theater:#0b84c6; --hoy:#c2552d; --gigs:#5b4fd0; --thread:#1f7a3f; --clients:#0e7a80;
   --chip:#eef1f5; --ok:#1c7f55;
   --f-display:"Familjen Grotesk","Segoe UI",system-ui,sans-serif;
   --f-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
@@ -15,10 +15,10 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0f1218; --surface:#171b23; --fg:#e7eaf0; --muted:#98a1b2; --line:#283040;
-  --theater:#5cc4f5; --hoy:#f08a5d; --gigs:#9d94ff; --chip:#212836; --ok:#4fcf95; color-scheme:dark}}
+  --theater:#5cc4f5; --hoy:#f08a5d; --gigs:#9d94ff; --thread:#7fe39a; --clients:#4fd3cc; --chip:#212836; --ok:#4fcf95; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1218; --surface:#171b23; --fg:#e7eaf0; --muted:#98a1b2; --line:#283040;
-  --theater:#5cc4f5; --hoy:#f08a5d; --gigs:#9d94ff; --chip:#212836; --ok:#4fcf95; color-scheme:dark}
+  --theater:#5cc4f5; --hoy:#f08a5d; --gigs:#9d94ff; --thread:#7fe39a; --clients:#4fd3cc; --chip:#212836; --ok:#4fcf95; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55}
 a{color:inherit}
@@ -88,7 +88,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
   <header class="top">
     <div>
       <h1>Project Link Hub</h1>
-      <p>Every live demo, prototype, board and handoff for the Agent Operations Theater, HoyOS and Between Gigs, in one place. Open any page from its row.</p>
+      <p>Every live demo, prototype, board and handoff for the Agent Operations Theater, HoyOS, Between Gigs, Threadline and Client management, in one place. Open any page from its row.</p>
     </div>
     <div class="tools">
       <input id="q" class="search" type="search" placeholder="Filter links, e.g. board, Figma, backend" aria-label="Filter links">
@@ -102,6 +102,8 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
       <a href="#theater" style="--c:var(--theater)"><b><i></i>Agent Theater</b><span data-count="theater"></span></a>
       <a href="#hoy" style="--c:var(--hoy)"><b><i></i>HoyOS</b><span data-count="hoy"></span></a>
       <a href="#gigs" style="--c:var(--gigs)"><b><i></i>Between Gigs</b><span data-count="gigs"></span></a>
+      <a href="#threadline" style="--c:var(--thread)"><b><i></i>Threadline</b><span data-count="threadline"></span></a>
+      <a href="#clients" style="--c:var(--clients)"><b><i></i>Client management</b><span data-count="clients"></span></a>
     </nav>
 
     <main>
@@ -215,6 +217,47 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
           <h3>On GitHub</h3>
           <ul class="links">
             <li><a class="thumb" href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/gigsrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Branch</span><span class="txt"><a href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener">Review pages branch</a><small>Showcase, Build Map and Backend Handoff. Live at /between-gig-2.0/artifacts/ once merged into main.</small><code>between-gig-2.0 · artifacts/review-pages</code></span></span><a class="open" href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener">Open ↗</a></li>
+          </ul>
+        </div>
+      </section>
+      <section class="proj" id="threadline" style="--c:var(--thread)">
+        <div class="ph">
+          <div>
+            <div class="kick">Product · WhatsApp to project HQ</div>
+            <h2>Threadline</h2>
+            <p>Turns a WhatsApp project chat into a live 3D mission map: threads, decisions, open asks, risks and ready-to-send updates.</p>
+          </div>
+          <div class="acts">
+            <a class="primary" href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener">Open Threadline ↗</a>
+            <button class="btn copy-proj" type="button" data-proj="threadline">Copy links</button>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Live and source</h3>
+          <ul class="links">
+            <li><a class="thumb" href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/threadline.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind live">Live</span><span class="txt"><a href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener">Threadline</a><small>Import a WhatsApp chat and see its crew orbit, quest board, threads and updates. Opens on a sample chat.</small><code>imagine-os.github.io/Whatsapp</code></span></span><a class="open" href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/tlrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Repo</span><span class="txt"><a href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener">Threadline on GitHub</a><small>Source for the site, its 3D views and the walkthrough video.</small><code>github.com/imagine-os/Whatsapp</code></span></span><a class="open" href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener">Open ↗</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="proj" id="clients" style="--c:var(--clients)">
+        <div class="ph">
+          <div>
+            <div class="kick">Product · Studio operations</div>
+            <h2>Client management</h2>
+            <p>The studio's client board, client pages, project templates and client portal, split out of Between Gigs 2.0 into its own app.</p>
+          </div>
+          <div class="acts">
+            <a class="primary" href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener">Open the app ↗</a>
+            <button class="btn copy-proj" type="button" data-proj="clients">Copy links</button>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Live and source</h3>
+          <ul class="links">
+            <li><a class="thumb" href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/cmrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind live">Live</span><span class="txt"><a href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener">Client management app</a><small>Clients by stage, each client's projects, tasks and notes, the new-project template and the client portal. Sample data stays in your browser.</small><code>imagine-os.github.io/client-management</code></span></span><a class="open" href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/cmrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Repo</span><span class="txt"><a href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener">client-management on GitHub</a><small>Next.js app on the Between Gigs Design System.</small><code>github.com/imagine-os/client-management</code></span></span><a class="open" href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
       </section>
