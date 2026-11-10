@@ -23,75 +23,116 @@
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55}
 a{color:inherit}
 .wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
-header.top{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:end;justify-content:space-between;padding-bottom:28px;border-bottom:1px solid var(--line)}
-.top h1{font-family:var(--f-display);font-weight:700;font-size:clamp(32px,6vw,52px);line-height:1;letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
-.top p{margin:0;color:var(--muted);max-width:60ch}
-.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.search{font:inherit;font-size:14px;width:min(320px,100%);padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+header.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 48px;align-items:end;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.top .eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-variant-numeric:tabular-nums}
+.top h1{font-family:var(--f-display);font-weight:700;font-size:clamp(32px,6vw,52px);line-height:1;letter-spacing:-.02em;margin:0 0 12px;text-wrap:balance}
+.top p{margin:0;color:var(--muted);max-width:58ch}
+.tools{display:flex;gap:8px;align-items:center}
+.search{font:inherit;font-size:14px;width:300px;height:40px;padding:0 12px 0 36px;border-radius:8px;border:1px solid var(--line);color:var(--fg);
+  background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238a93a3' stroke-width='1.8'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='m11 11 3.5 3.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat 12px 50%}
+.tools .btn{height:40px;padding:0 14px}
 .search:focus-visible,.btn:focus-visible,.copy:focus-visible,a:focus-visible{outline:2px solid var(--theater);outline-offset:2px}
 .btn{font:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
 .btn:hover{border-color:var(--muted)}
-.layout{display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px;margin-top:36px}
-nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:4px}
-.rail .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.rail a{display:flex;justify-content:space-between;gap:8px;text-decoration:none;padding:8px 10px;border-radius:6px;font-weight:500}
-.rail a:hover{background:var(--surface)}
-.rail a span{font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-.rail a i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;background:var(--c)}
-main{display:flex;flex-direction:column;gap:64px;min-width:0}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:44px;margin-top:40px}
+nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:2px}
+.rail .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px 12px}
+.rail a{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:500;font-size:14.5px;color:var(--muted);transition:background-color .15s,color .15s}
+.rail a b{display:flex;align-items:center;gap:10px;font-weight:inherit;min-width:0;white-space:nowrap}
+.rail a:hover{background:var(--surface);color:var(--fg)}
+.rail a.on{background:var(--surface);color:var(--fg);font-weight:600;box-shadow:inset 3px 0 0 var(--c)}
+.rail a span{min-width:24px;text-align:center;font-family:var(--f-mono);font-size:11.5px;line-height:20px;border-radius:10px;background:var(--chip);color:var(--muted);font-variant-numeric:tabular-nums}
+.rail a i{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--c)}
+main{display:flex;flex-direction:column;gap:80px;min-width:0}
 section.proj{--c:var(--muted);min-width:0;scroll-margin-top:24px}
-.ph{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between;padding-bottom:16px;border-bottom:3px solid var(--c)}
+.ph{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:end;padding-bottom:20px;border-bottom:2px solid var(--c)}
 .ph h2{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
-.ph .kick{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin-bottom:6px}
-.ph p{margin:6px 0 0;color:var(--muted);max-width:62ch}
-.ph .acts{display:flex;gap:8px;flex-wrap:wrap}
-.primary{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:14px;padding:9px 16px;border-radius:8px;background:var(--c);color:var(--bg)}
+.ph .kick{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
+.ph p{margin:10px 0 0;color:var(--muted);max-width:60ch;text-wrap:pretty}
+.ph .acts{display:flex;gap:8px}
+.primary{display:inline-flex;align-items:center;gap:8px;height:40px;text-decoration:none;font-weight:600;font-size:14px;padding:0 16px;border-radius:8px;background:var(--c);color:var(--bg);white-space:nowrap}
 .primary:hover{filter:brightness(1.08)}
-.media{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;margin-top:20px}
+.ph .btn{height:40px;padding:0 14px}
+/* video and four stills: the stills share the video's exact height */
+.media{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:12px;margin-top:24px;align-items:stretch}
 .media video{width:100%;aspect-ratio:16/9;border-radius:10px;background:#000;display:block}
-.vcap{font-size:13px;color:var(--muted);margin-top:8px}
-.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
-.thumbs figure{margin:0}
-.thumbs img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;display:block}
-.thumbs figcaption{font-size:12px;color:var(--muted);margin-top:4px}
-.group{margin-top:22px}
-.group h3{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-ul.links{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-ul.links li{display:grid;grid-template-columns:168px minmax(0,1fr) auto;gap:18px;align-items:center;padding:12px 14px}
-.thumb{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--chip)}
-.thumb img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .25s ease}
-ul.links li:hover .thumb img{transform:scale(1.04)}
-.meta{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
-.open{font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;padding:8px 14px;border-radius:8px;background:var(--c);color:var(--bg)}
-.open:hover{filter:brightness(1.08)}
-.open:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.vcap{font-size:13px;color:var(--muted);margin:10px 0 0}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px}
+.thumbs figure{position:relative;margin:0;min-height:0;border-radius:8px;overflow:hidden;background:var(--chip)}
+.thumbs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.thumbs figcaption{position:absolute;left:8px;bottom:8px;font-size:11.5px;font-weight:500;line-height:1;padding:5px 8px;border-radius:6px;background:rgba(10,13,18,.72);color:#eef1f5;backdrop-filter:blur(4px)}
+.group{margin-top:32px}
+.ph + .group{margin-top:24px}
+.group h3{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+/* a row: thumbnail · label + title, description, address · Open. The title link covers the whole row. */
+ul.links{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+ul.links li{position:relative;display:grid;grid-template-columns:152px minmax(0,1fr) auto;gap:20px;align-items:center;padding:14px 16px;transition:background-color .15s}
 ul.links li+li{border-top:1px solid var(--line)}
-ul.links li:hover{background:var(--chip)}
-.kind{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:4px;background:var(--chip);color:var(--muted);justify-self:start;white-space:nowrap}
-.kind.live{color:var(--ok)}
+ul.links li:hover{background:color-mix(in srgb,var(--c) 5%,var(--surface))}
+ul.links li:focus-within{box-shadow:inset 3px 0 0 var(--c)}
+.thumb{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--chip)}
+.thumb img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .3s ease}
+ul.links li:hover .thumb img{transform:scale(1.03)}
+.meta{display:flex;flex-direction:column;gap:4px;min-width:0}
+.head{display:flex;align-items:center;gap:8px;min-width:0}
+.head a{font-weight:600;font-size:15.5px;line-height:1.3;text-decoration:none;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.head a::after{content:"";position:absolute;inset:0}
+.head a:focus-visible{outline:none}
+ul.links li:hover .head a{color:var(--c)}
+.kind{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:10.5px;line-height:1;letter-spacing:.06em;text-transform:uppercase;padding:4px 6px;border-radius:4px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.kind.live{color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.kind.live::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .txt{min-width:0}
-.txt a{font-weight:600;text-decoration:none}
-.txt a:hover{text-decoration:underline;text-decoration-color:var(--c);text-underline-offset:3px}
-.txt small{display:block;color:var(--muted);font-size:13.5px}
-.txt code{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);overflow-wrap:anywhere;margin-top:2px}
+.txt small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--muted);font-size:14px;line-height:1.5;max-width:68ch}
+.txt code{display:block;margin-top:4px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.open{position:relative;z-index:1;display:inline-flex;align-items:center;height:34px;padding:0 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--c);transition:background-color .15s,color .15s,border-color .15s}
+ul.links li:hover .open,.open:focus-visible{background:var(--c);border-color:var(--c);color:var(--bg)}
+.open:focus-visible{outline:2px solid var(--c);outline-offset:2px}
 .copy{font:inherit;font-size:12.5px;font-weight:600;padding:6px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;white-space:nowrap}
 .copy:hover{border-color:var(--c)}
 .copy.done{color:var(--ok);border-color:var(--ok)}
 .empty{display:none;padding:24px;color:var(--muted)}
 footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-@media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}nav.rail{position:static;flex-direction:row;flex-wrap:wrap}.rail .lbl{width:100%}.media{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:620px){ul.links li{grid-template-columns:112px minmax(0,1fr)}ul.links .open{grid-column:2;justify-self:start}.txt small{display:none}}
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media (max-width:860px){
+  header.top{grid-template-columns:minmax(0,1fr)}
+  .tools{width:100%}.search{flex:1;width:auto;min-width:0}
+  .layout{grid-template-columns:minmax(0,1fr);gap:28px;margin-top:0}
+  nav.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;flex-direction:row;gap:6px;overflow-x:auto;scrollbar-width:none;
+    margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:10px max(16px,env(safe-area-inset-left,0px));background:var(--bg);border-bottom:1px solid var(--line)}
+  nav.rail::-webkit-scrollbar{display:none}
+  .rail .lbl{display:none}
+  .rail a{flex:0 0 auto;padding:7px 10px;border:1px solid var(--line);background:var(--surface);font-size:14px}
+  .rail a.on{box-shadow:none;border-color:var(--c)}
+  .ph{grid-template-columns:minmax(0,1fr)}
+  .media{grid-template-columns:minmax(0,1fr)}
+  .thumbs{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto}
+  .thumbs figure{aspect-ratio:4/3}
+  section.proj{scroll-margin-top:72px}
+  main{gap:56px}
+}
+@media (max-width:620px){
+  .wrap{padding-block:28px 56px}
+  .ph .acts{width:100%}.ph .primary{flex:1;justify-content:center}
+  .thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  ul.links li{grid-template-columns:88px minmax(0,1fr);gap:14px;padding:12px}
+  ul.links .open{display:none}
+  .head{flex-wrap:wrap;gap:4px 8px}.head a{white-space:normal;font-size:15px}
+  .txt small{font-size:13.5px}
+  .txt code{display:none}
+  footer{margin-top:48px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.thumb img{transform:none!important}}
 </style>
 
 <div class="wrap">
   <header class="top">
     <div>
+      <div class="eyebrow">5 projects · <span id="total">25</span> links · <span style="white-space:nowrap">updated 10 Nov 2026</span></div>
       <h1>Project Link Hub</h1>
-      <p>Every live demo, prototype, board and handoff for the Agent Operations Theater, HoyOS, Between Gigs, Threadline and Client management, in one place. Open any page from its row.</p>
+      <p>Every live demo, prototype, board and handoff for the Agent Operations Theater, HoyOS, Between Gigs, Threadline and Client management, in one place.</p>
     </div>
     <div class="tools">
-      <input id="q" class="search" type="search" placeholder="Filter links, e.g. board, Figma, backend" aria-label="Filter links">
+      <input id="q" class="search" type="search" placeholder="Filter, e.g. board, Figma" aria-label="Filter links">
       <button id="copyAll" class="btn" type="button">Copy every link</button>
     </div>
   </header>
@@ -120,10 +161,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
           </div>
         </div>
         <div class="media">
-          <div>
-            <video controls playsinline preload="metadata" poster="media/blender-hero.jpg" src="media/agent-theater-concept.mp4"></video>
-            <div class="vcap">Motion preview, about 55 seconds: fly-through, each desk, the Scene Engine and speak-to-edit.</div>
-          </div>
+          <video controls playsinline preload="metadata" poster="media/blender-hero.jpg" src="media/agent-theater-concept.mp4" aria-describedby="vcap"></video>
           <div class="thumbs">
             <figure><img src="media/blender-hero.jpg" alt="Wide ray-traced view of the theater with the big screen" loading="lazy"><figcaption>Ray-traced hero</figcaption></figure>
             <figure><img src="media/blender-screen.jpg" alt="Low angle up at the Scene Engine screen" loading="lazy"><figcaption>Scene Engine screen</figcaption></figure>
@@ -131,17 +169,18 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
             <figure><img src="media/frame-08-speak-to-edit.jpg" alt="Speak to edit: a screen changing a bottle by voice" loading="lazy"><figcaption>Speak to edit</figcaption></figure>
           </div>
         </div>
+        <p class="vcap" id="vcap">Motion preview, 55 seconds: a fly-through of the room, each desk, the Scene Engine and speak-to-edit.</p>
         <div class="group">
           <h3>Demo and design</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://playset-llc.github.io/agent-operations-theater/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/theater.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind live">Live</span><span class="txt"><a href="https://playset-llc.github.io/agent-operations-theater/" target="_blank" rel="noopener">Agent Operations Theater, 3D demo</a><small>Orbit the room, open any desk's screen, zoom in, run commands, storyboard and ray-traced render gallery. Vault, Book and Research prototypes open from its top bar.</small><code>playset-llc.github.io/agent-operations-theater/</code></span></span><a class="open" href="https://playset-llc.github.io/agent-operations-theater/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://www.figma.com/design/zGxDXVrTIXqExjmspvfm8G" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/figma.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Figma</span><span class="txt"><a href="https://www.figma.com/design/zGxDXVrTIXqExjmspvfm8G" target="_blank" rel="noopener">Theater concept renders</a><small>The AI-generated hero and desk frames, in the Client Projects team.</small><code>figma.com/design/zGxDXVrTIXqExjmspvfm8G</code></span></span><a class="open" href="https://www.figma.com/design/zGxDXVrTIXqExjmspvfm8G" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://playset-llc.github.io/agent-operations-theater/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/theater.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind live">Live</span><a href="https://playset-llc.github.io/agent-operations-theater/" target="_blank" rel="noopener">Agent Operations Theater, 3D demo</a></span><span class="txt"><small>Orbit the room, open any desk's screen, zoom in, run commands, storyboard and ray-traced render gallery. Vault, Book and Research prototypes open from its top bar.</small><code>playset-llc.github.io/agent-operations-theater/</code></span></span><a class="open" href="https://playset-llc.github.io/agent-operations-theater/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://www.figma.com/design/zGxDXVrTIXqExjmspvfm8G" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/figma.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Figma</span><a href="https://www.figma.com/design/zGxDXVrTIXqExjmspvfm8G" target="_blank" rel="noopener">Theater concept renders</a></span><span class="txt"><small>The AI-generated hero and desk frames, in the Client Projects team.</small><code>figma.com/design/zGxDXVrTIXqExjmspvfm8G</code></span></span><a class="open" href="https://www.figma.com/design/zGxDXVrTIXqExjmspvfm8G" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
         <div class="group">
           <h3>On GitHub</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://github.com/Playset-LLC/agent-operations-theater" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/theaterrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Repo</span><span class="txt"><a href="https://github.com/Playset-LLC/agent-operations-theater" target="_blank" rel="noopener">agent-operations-theater on GitHub</a><small>Source for the demo, models, renders and the motion video.</small><code>github.com/Playset-LLC/agent-operations-theater</code></span></span><a class="open" href="https://github.com/Playset-LLC/agent-operations-theater" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/Playset-LLC/agent-operations-theater" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/theaterrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Repo</span><a href="https://github.com/Playset-LLC/agent-operations-theater" target="_blank" rel="noopener">agent-operations-theater on GitHub</a></span><span class="txt"><small>Source for the demo, models, renders and the motion video.</small><code>github.com/Playset-LLC/agent-operations-theater</code></span></span><a class="open" href="https://github.com/Playset-LLC/agent-operations-theater" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
       </section>
@@ -149,7 +188,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
       <section class="proj" id="hoy" style="--c:var(--hoy)">
         <div class="ph">
           <div>
-            <div class="kick">Product · opens 30 Oct 2026</div>
+            <div class="kick">Product · open since 30 Oct 2026</div>
             <h2>HoyOS</h2>
             <p>The member platform for HOY Wellness in Medellín, polished in the "Pulso Luxe" direction: bento tiles, invitation-style serif, member card.</p>
           </div>
@@ -161,28 +200,28 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
         <div class="group">
           <h3>Live and source</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://hoy-human-club.github.io/Hoy-2.0/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/hoylive.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind live">Live</span><span class="txt"><a href="https://hoy-human-club.github.io/Hoy-2.0/" target="_blank" rel="noopener">HoyOS live site</a><small>Coming-soon page at the root; the member hub is at #/hub.</small><code>hoy-human-club.github.io/Hoy-2.0</code></span></span><a class="open" href="https://hoy-human-club.github.io/Hoy-2.0/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://github.com/hoy-human-club/Hoy-2.0" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/repo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Repo</span><span class="txt"><a href="https://github.com/hoy-human-club/Hoy-2.0" target="_blank" rel="noopener">Hoy-2.0 on GitHub</a><small>Source code and changelogs.</small><code>github.com/hoy-human-club/Hoy-2.0</code></span></span><a class="open" href="https://github.com/hoy-human-club/Hoy-2.0" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://github.com/hoy-human-club/Hoy-2.0/tree/ui-polish/artifact-pages/public/artifacts" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/hoybranch.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Branch</span><span class="txt"><a href="https://github.com/hoy-human-club/Hoy-2.0/tree/ui-polish/artifact-pages/public/artifacts" target="_blank" rel="noopener">Review pages branch</a><small>Before and After, Studio UI, Navigation Architecture and the Polish Plan. Live at /Hoy-2.0/artifacts/ once merged into main.</small><code>Hoy-2.0 · ui-polish/artifact-pages</code></span></span><a class="open" href="https://github.com/hoy-human-club/Hoy-2.0/tree/ui-polish/artifact-pages/public/artifacts" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://hoy-human-club.github.io/Hoy-2.0/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/hoylive.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind live">Live</span><a href="https://hoy-human-club.github.io/Hoy-2.0/" target="_blank" rel="noopener">HoyOS live site</a></span><span class="txt"><small>Coming-soon page at the root; the member hub is at #/hub.</small><code>hoy-human-club.github.io/Hoy-2.0</code></span></span><a class="open" href="https://hoy-human-club.github.io/Hoy-2.0/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/hoy-human-club/Hoy-2.0" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/repo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Repo</span><a href="https://github.com/hoy-human-club/Hoy-2.0" target="_blank" rel="noopener">Hoy-2.0 on GitHub</a></span><span class="txt"><small>Source code, changelogs and the prompt log.</small><code>github.com/hoy-human-club/Hoy-2.0</code></span></span><a class="open" href="https://github.com/hoy-human-club/Hoy-2.0" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/hoy-human-club/Hoy-2.0/tree/ui-polish/artifact-pages/public/artifacts" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/hoybranch.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Branch</span><a href="https://github.com/hoy-human-club/Hoy-2.0/tree/ui-polish/artifact-pages/public/artifacts" target="_blank" rel="noopener">Review pages branch</a></span><span class="txt"><small>Before and After, Studio UI, Navigation Architecture and the Polish Plan. Live at /Hoy-2.0/artifacts/ once merged into main.</small><code>Hoy-2.0 · ui-polish/artifact-pages</code></span></span><a class="open" href="https://github.com/hoy-human-club/Hoy-2.0/tree/ui-polish/artifact-pages/public/artifacts" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
         <div class="group">
           <h3>Planning</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/project-board/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/board.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Board</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/project-board/" target="_blank" rel="noopener">HoyOS Project Board</a><small>Every task from the dev log and the UI polish work, by status. A read-only snapshot; the live board stays on claude.ai.</small><code>imagine-os.github.io/project-pages/hoy/project-board/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/project-board/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://docs.google.com/spreadsheets/d/19SWDF957P55Iw5QEPyVtoPDS50-eor0k76djVv1YyNU/edit" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/sheet.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Sheet</span><span class="txt"><a href="https://docs.google.com/spreadsheets/d/19SWDF957P55Iw5QEPyVtoPDS50-eor0k76djVv1YyNU/edit" target="_blank" rel="noopener">HOY Front End Dev Log</a><small>Features, agreed rules, decisions, questions and owners.</small><code>docs.google.com/spreadsheets/d/19SWDF957P55…</code></span></span><a class="open" href="https://docs.google.com/spreadsheets/d/19SWDF957P55Iw5QEPyVtoPDS50-eor0k76djVv1YyNU/edit" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/polish-plan/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/plan.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Plan</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/polish-plan/" target="_blank" rel="noopener">Hoy UI Polish Plan</a><small>What the polish pass covers and in what order.</small><code>imagine-os.github.io/project-pages/hoy/polish-plan/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/polish-plan/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/project-board/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/board.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Board</span><a href="https://imagine-os.github.io/project-pages/hoy/project-board/" target="_blank" rel="noopener">HoyOS Project Board</a></span><span class="txt"><small>Every task from the dev log and the UI polish work, by status. A read-only snapshot; the live board stays on claude.ai.</small><code>imagine-os.github.io/project-pages/hoy/project-board/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/project-board/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://docs.google.com/spreadsheets/d/19SWDF957P55Iw5QEPyVtoPDS50-eor0k76djVv1YyNU/edit" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/sheet.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Sheet</span><a href="https://docs.google.com/spreadsheets/d/19SWDF957P55Iw5QEPyVtoPDS50-eor0k76djVv1YyNU/edit" target="_blank" rel="noopener">HOY Front End Dev Log</a></span><span class="txt"><small>Features, agreed rules, decisions, questions and owners.</small><code>docs.google.com/spreadsheets/d/19SWDF957P55…</code></span></span><a class="open" href="https://docs.google.com/spreadsheets/d/19SWDF957P55Iw5QEPyVtoPDS50-eor0k76djVv1YyNU/edit" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/polish-plan/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/plan.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Plan</span><a href="https://imagine-os.github.io/project-pages/hoy/polish-plan/" target="_blank" rel="noopener">Hoy UI Polish Plan</a></span><span class="txt"><small>What the polish pass covers and in what order.</small><code>imagine-os.github.io/project-pages/hoy/polish-plan/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/polish-plan/" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
         <div class="group">
           <h3>Design</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/design-system/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/designsystem.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">System</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/design-system/" target="_blank" rel="noopener">HOY Design System</a><small>Colors, type, spacing and components.</small><code>imagine-os.github.io/project-pages/hoy/design-system/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/design-system/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/bold-directions/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/directions.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Design</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/bold-directions/" target="_blank" rel="noopener">Hoy Bold Directions</a><small>The visual directions explored, including Pulso and Pulso Luxe.</small><code>imagine-os.github.io/project-pages/hoy/bold-directions/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/bold-directions/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/before-after/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/beforeafter.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Design</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/before-after/" target="_blank" rel="noopener">Hoy Before and After</a><small>Screens before and after the polish.</small><code>imagine-os.github.io/project-pages/hoy/before-after/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/before-after/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/studio-ui/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/studio.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Design</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/studio-ui/" target="_blank" rel="noopener">HoyOS Studio UI</a><small>Studio screens.</small><code>imagine-os.github.io/project-pages/hoy/studio-ui/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/studio-ui/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/hub-layouts/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/hublayouts.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Design</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/hub-layouts/" target="_blank" rel="noopener">HoyOS Hub Layouts</a><small>Layout options for the member hub.</small><code>imagine-os.github.io/project-pages/hoy/hub-layouts/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/hub-layouts/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/navigation-architecture/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/nav.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Map</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/hoy/navigation-architecture/" target="_blank" rel="noopener">HoyOS Navigation Architecture</a><small>How the sections and screens connect.</small><code>imagine-os.github.io/project-pages/hoy/navigation-architecture/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/navigation-architecture/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/design-system/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/designsystem.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">System</span><a href="https://imagine-os.github.io/project-pages/hoy/design-system/" target="_blank" rel="noopener">HOY Design System</a></span><span class="txt"><small>Colors, type, spacing, components and the Pulso Materia materials.</small><code>imagine-os.github.io/project-pages/hoy/design-system/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/design-system/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/bold-directions/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/directions.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Design</span><a href="https://imagine-os.github.io/project-pages/hoy/bold-directions/" target="_blank" rel="noopener">Hoy Bold Directions</a></span><span class="txt"><small>The visual directions explored, including Pulso and Pulso Luxe.</small><code>imagine-os.github.io/project-pages/hoy/bold-directions/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/bold-directions/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/before-after/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/beforeafter.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Design</span><a href="https://imagine-os.github.io/project-pages/hoy/before-after/" target="_blank" rel="noopener">Hoy Before and After</a></span><span class="txt"><small>Screens before and after the polish.</small><code>imagine-os.github.io/project-pages/hoy/before-after/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/before-after/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/studio-ui/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/studio.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Design</span><a href="https://imagine-os.github.io/project-pages/hoy/studio-ui/" target="_blank" rel="noopener">HoyOS Studio UI</a></span><span class="txt"><small>The staff workspace in the Pulso look: sidebar, tiles, tabs and notices.</small><code>imagine-os.github.io/project-pages/hoy/studio-ui/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/studio-ui/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/hub-layouts/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/hublayouts.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Design</span><a href="https://imagine-os.github.io/project-pages/hoy/hub-layouts/" target="_blank" rel="noopener">HoyOS Hub Layouts</a></span><span class="txt"><small>Four layout options for the testing hub: launcher, bento, explorer and journey map.</small><code>imagine-os.github.io/project-pages/hoy/hub-layouts/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/hub-layouts/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/hoy/navigation-architecture/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/nav.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Map</span><a href="https://imagine-os.github.io/project-pages/hoy/navigation-architecture/" target="_blank" rel="noopener">HoyOS Navigation Architecture</a></span><span class="txt"><small>How the sections and screens connect.</small><code>imagine-os.github.io/project-pages/hoy/navigation-architecture/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/hoy/navigation-architecture/" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
       </section>
@@ -192,31 +231,32 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
           <div>
             <div class="kick">Product · 2.0 in progress</div>
             <h2>Between Gigs</h2>
-            <p>The Between Gigs platform, its showcase, and the 2.0 build and backend plans.</p>
+            <p>The platform for Hollywood professionals between productions: its Studio site editor, design system, showcase, and the 2.0 build and backend plans.</p>
           </div>
           <div class="acts">
-            <a class="primary" href="https://imagine-os.github.io/project-pages/between-gigs/design-system/" target="_blank" rel="noopener">Open Between Gigs ↗</a>
+            <a class="primary" href="https://between-gigs.github.io/between-gig-2.0/studio/" target="_blank" rel="noopener">Open Studio ↗</a>
             <button class="btn copy-proj" type="button" data-proj="gigs">Copy links</button>
           </div>
         </div>
         <div class="group">
           <h3>Product</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/design-system/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/gigs.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind live">Live</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/between-gigs/design-system/" target="_blank" rel="noopener">Between Gigs</a><small>The main Between Gigs page.</small><code>imagine-os.github.io/project-pages/between-gigs/design-system/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/design-system/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/showcase/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/showcase.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Showcase</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/between-gigs/showcase/" target="_blank" rel="noopener">Between Gigs Showcase</a><small>A walkthrough of what Between Gigs does.</small><code>imagine-os.github.io/project-pages/between-gigs/showcase/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/showcase/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://between-gigs.github.io/between-gig-2.0/studio/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/bgstudio.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind live">Live</span><a href="https://between-gigs.github.io/between-gig-2.0/studio/" target="_blank" rel="noopener">Studio: site designer and CMS</a></span><span class="txt"><small>A Webflow-style page designer with breakpoints, a navigator and a style panel, plus an Airtable-style CMS. Everything stays in your browser.</small><code>between-gigs.github.io/between-gig-2.0/studio/</code></span></span><a class="open" href="https://between-gigs.github.io/between-gig-2.0/studio/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/design-system/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/gigs.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">System</span><a href="https://imagine-os.github.io/project-pages/between-gigs/design-system/" target="_blank" rel="noopener">Between Gigs Design System</a></span><span class="txt"><small>Tokens, 50 React components and the logo, in a light and a dark theme.</small><code>imagine-os.github.io/project-pages/between-gigs/design-system/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/design-system/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/showcase/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/showcase.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Showcase</span><a href="https://imagine-os.github.io/project-pages/between-gigs/showcase/" target="_blank" rel="noopener">Between Gigs Showcase</a></span><span class="txt"><small>The system at a glance: tokens, components, contrast checks and a clickable prototype.</small><code>imagine-os.github.io/project-pages/between-gigs/showcase/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/showcase/" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
         <div class="group">
           <h3>2.0 build</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/build-map/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/buildmap.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Plan</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/between-gigs/build-map/" target="_blank" rel="noopener">Between Gigs 2.0 Build Map</a><small>What gets built for 2.0 and in what order.</small><code>imagine-os.github.io/project-pages/between-gigs/build-map/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/build-map/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/backend-handoff/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/handoff.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Handoff</span><span class="txt"><a href="https://imagine-os.github.io/project-pages/between-gigs/backend-handoff/" target="_blank" rel="noopener">Between Gigs 2.0 Backend Handoff</a><small>What the backend needs to deliver for 2.0.</small><code>imagine-os.github.io/project-pages/between-gigs/backend-handoff/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/backend-handoff/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/build-map/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/buildmap.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Plan</span><a href="https://imagine-os.github.io/project-pages/between-gigs/build-map/" target="_blank" rel="noopener">Between Gigs 2.0 Build Map</a></span><span class="txt"><small>What gets built for 2.0 and in what order.</small><code>imagine-os.github.io/project-pages/between-gigs/build-map/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/build-map/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/project-pages/between-gigs/backend-handoff/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/handoff.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Handoff</span><a href="https://imagine-os.github.io/project-pages/between-gigs/backend-handoff/" target="_blank" rel="noopener">Between Gigs 2.0 Backend Handoff</a></span><span class="txt"><small>What the backend needs to deliver for 2.0.</small><code>imagine-os.github.io/project-pages/between-gigs/backend-handoff/</code></span></span><a class="open" href="https://imagine-os.github.io/project-pages/between-gigs/backend-handoff/" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
         <div class="group">
           <h3>On GitHub</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/gigsrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Branch</span><span class="txt"><a href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener">Review pages branch</a><small>Showcase, Build Map and Backend Handoff. Live at /between-gig-2.0/artifacts/ once merged into main.</small><code>between-gig-2.0 · artifacts/review-pages</code></span></span><a class="open" href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/gigsrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Branch</span><a href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener">Review pages branch</a></span><span class="txt"><small>Showcase, Build Map and Backend Handoff. Live at /between-gig-2.0/artifacts/ once merged into main.</small><code>between-gig-2.0 · artifacts/review-pages</code></span></span><a class="open" href="https://github.com/Between-Gigs/between-gig-2.0/tree/artifacts/review-pages/public/artifacts" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
       </section>
@@ -235,8 +275,8 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
         <div class="group">
           <h3>Live and source</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/threadline.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind live">Live</span><span class="txt"><a href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener">Threadline</a><small>Connect a WhatsApp chat and see it as a mind map of topics with their to-dos, decisions, risks and materials. Opens on a sample chat.</small><code>imagine-os.github.io/Whatsapp</code></span></span><a class="open" href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/tlrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Repo</span><span class="txt"><a href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener">Threadline on GitHub</a><small>Source for the site, its 3D views and the walkthrough video.</small><code>github.com/imagine-os/Whatsapp</code></span></span><a class="open" href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/threadline.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind live">Live</span><a href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener">Threadline</a></span><span class="txt"><small>Connect a WhatsApp chat and see it as a mind map of topics with their to-dos, decisions, risks and materials. Opens on a sample chat.</small><code>imagine-os.github.io/Whatsapp</code></span></span><a class="open" href="https://imagine-os.github.io/Whatsapp/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/tlrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Repo</span><a href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener">Threadline on GitHub</a></span><span class="txt"><small>Source for the site, its views and the walkthrough video.</small><code>github.com/imagine-os/Whatsapp</code></span></span><a class="open" href="https://github.com/imagine-os/Whatsapp" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
       </section>
@@ -256,8 +296,8 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
         <div class="group">
           <h3>Live and source</h3>
           <ul class="links">
-            <li><a class="thumb" href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/clients.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind live">Live</span><span class="txt"><a href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener">Client management app</a><small>JAM Studio's clients by stage, tasks across every client, each client's projects and notes, project templates and the client portal. Sample data stays in your browser.</small><code>imagine-os.github.io/client-management</code></span></span><a class="open" href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener">Open ↗</a></li>
-            <li><a class="thumb" href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/cmrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="kind">Repo</span><span class="txt"><a href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener">client-management on GitHub</a><small>Next.js app on the Between Gigs Design System.</small><code>github.com/imagine-os/client-management</code></span></span><a class="open" href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/clients.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind live">Live</span><a href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener">Client management app</a></span><span class="txt"><small>JAM Studio's clients by stage, tasks across every client, each client's projects and notes, project templates and the client portal. Sample data stays in your browser.</small><code>imagine-os.github.io/client-management</code></span></span><a class="open" href="https://imagine-os.github.io/client-management/" target="_blank" rel="noopener">Open ↗</a></li>
+            <li><a class="thumb" href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="media/thumbs/cmrepo.jpg" alt="" loading="lazy"></a><span class="meta"><span class="head"><span class="kind">Repo</span><a href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener">client-management on GitHub</a></span><span class="txt"><small>Next.js app on the Between Gigs Design System.</small><code>github.com/imagine-os/client-management</code></span></span><a class="open" href="https://github.com/imagine-os/client-management" target="_blank" rel="noopener">Open ↗</a></li>
           </ul>
         </div>
       </section>
@@ -265,7 +305,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
     </main>
   </div>
 
-  <footer>Every page here is hosted on GitHub Pages and opens for anyone, no sign-in needed. Updated 27 October 2026.</footer>
+  <footer>Every page here is hosted on GitHub Pages and opens for anyone, no sign-in needed. Updated 10 November 2026.</footer>
 </div>
 
 <script>
@@ -275,7 +315,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
     function fail(){ btn.textContent='Copy failed, link shown'; }
     try{ navigator.clipboard.writeText(text).then(ok,fail); }catch(e){ fail(); }
   }
-  function rowLine(li){ var a=li.querySelector('.txt a'); return a.textContent.trim()+': '+a.href; }
+  function rowLine(li){ var a=li.querySelector('.head a'); return a.textContent.trim()+': '+a.href; }
   document.querySelectorAll('.copy-proj').forEach(function(b){
     b.addEventListener('click',function(){
       var s=document.getElementById(b.dataset.proj);
@@ -315,6 +355,17 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);color:v
     counts();
   });
   counts();
+  document.getElementById('total').textContent=document.querySelectorAll('ul.links li').length;
+  // highlight the project in view
+  var rail=[].slice.call(document.querySelectorAll('nav.rail a'));
+  if('IntersectionObserver' in window){
+    var nav=document.querySelector('nav.rail');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(!e.isIntersecting) return;
+      rail.forEach(function(a){ var on=a.getAttribute('href')==='#'+e.target.id; a.classList.toggle('on',on);
+        // on phones the rail is a sideways strip: keep the current project's chip in view
+        if(on && nav.scrollWidth>nav.clientWidth) nav.scrollTo({left:a.offsetLeft-16,behavior:'smooth'}); }); });},{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('section.proj').forEach(function(s){ io.observe(s); });
+  }
 })();
 </script>
 
